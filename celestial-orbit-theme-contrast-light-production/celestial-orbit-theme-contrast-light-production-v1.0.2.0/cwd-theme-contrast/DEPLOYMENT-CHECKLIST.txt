@@ -1,0 +1,21 @@
+Deployment Checklist
+
+Before deployment
+[ ] Confirm a full file backup exists
+[ ] Confirm a full database backup exists
+[ ] Confirm staging site is up to date
+[ ] Confirm Home page exists and contains intended content
+[ ] Confirm Settings > Reading uses the intended Home page
+[ ] Confirm Contact / Services / About / Hosting pages exist
+[ ] Confirm menu assignments
+[ ] Confirm cache purge plan
+
+After deployment
+[ ] Clear caches
+[ ] Verify homepage
+[ ] Verify mobile layout
+[ ] Verify menu links
+[ ] Verify forms
+[ ] Verify page speed / caching
+[ ] Verify no PHP warnings/notices
+[ ] Verify no broken images or mixed content
