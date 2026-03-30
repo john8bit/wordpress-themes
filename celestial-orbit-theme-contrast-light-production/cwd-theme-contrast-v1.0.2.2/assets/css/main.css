@@ -132,7 +132,8 @@ ul, ol { margin: 0 0 1rem 1.25rem; }
   font: inherit;
   color: #fff;
 }
-.main-navigation ul {
+.main-navigation > div > ul,
+.main-navigation > ul {
   display: flex;
   align-items: center;
   gap: 1.15rem;
@@ -140,11 +141,67 @@ ul, ol { margin: 0 0 1rem 1.25rem; }
   margin: 0;
   padding: 0;
 }
+.main-navigation li {
+  position: relative;
+}
 .main-navigation a {
   color: rgba(255,255,255,0.9);
   font-weight: 600;
 }
-.main-navigation a:hover { color: #fff; }
+.main-navigation a:hover,
+.main-navigation a:focus-visible { color: #fff; }
+.main-navigation .menu-item-has-children > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.main-navigation .menu-item-has-children > a::after {
+  content: "▾";
+  font-size: 0.78em;
+  line-height: 1;
+  opacity: 0.8;
+}
+.main-navigation .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem 0;
+  background: rgba(9, 18, 38, 0.98);
+  border: 1px solid rgba(150, 181, 224, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 22px 44px rgba(5, 11, 24, 0.34);
+  z-index: 200;
+}
+.main-navigation .sub-menu::before {
+  content: "";
+  position: absolute;
+  top: -0.85rem;
+  left: 0;
+  right: 0;
+  height: 0.85rem;
+}
+.main-navigation .sub-menu li {
+  display: block;
+}
+.main-navigation .sub-menu a {
+  display: block;
+  padding: 0.72rem 1rem;
+  white-space: normal;
+  font-weight: 600;
+}
+.main-navigation .sub-menu a:hover,
+.main-navigation .sub-menu a:focus-visible {
+  background: rgba(255,255,255,0.06);
+}
+.main-navigation li:hover > .sub-menu,
+.main-navigation li:focus-within > .sub-menu,
+.main-navigation li.is-open > .sub-menu {
+  display: block;
+}
 
 .hero-section {
   position: relative;
@@ -532,9 +589,39 @@ textarea { min-height: 160px; }
     border-bottom: 1px solid rgba(150, 181, 224, 0.16);
   }
   .main-navigation.is-open { display: block; }
-  .main-navigation ul {
+  .main-navigation > div > ul,
+  .main-navigation > ul {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .main-navigation li {
+    width: 100%;
+  }
+  .main-navigation a {
+    width: 100%;
+  }
+  .main-navigation .sub-menu {
+    position: static;
+    min-width: 0;
+    margin: 0.4rem 0 0.2rem 0;
+    padding: 0.35rem 0 0.35rem 0.9rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    box-shadow: none;
+  }
+  .main-navigation .sub-menu::before {
+    display: none;
+  }
+  .main-navigation .sub-menu a {
+    padding: 0.65rem 0.85rem;
+  }
+  .main-navigation .menu-item-has-children:hover > .sub-menu,
+  .main-navigation .menu-item-has-children:focus-within > .sub-menu {
+    display: none;
+  }
+  .main-navigation .menu-item-has-children.is-open > .sub-menu {
+    display: block;
   }
   .hero-panel__stack,
   .hero-section__grid,
@@ -804,5 +891,73 @@ textarea { min-height: 160px; }
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+
+/* Dropdown hover-gap fix and custom menu compatibility */
+.main-navigation > div > ul > li,
+.main-navigation > ul > li,
+.main-menu > li {
+  position: relative;
+}
+
+.main-navigation > div > ul > li > a,
+.main-navigation > ul > li > a,
+.main-menu > li > a {
+  display: block;
+  padding: 12px 16px;
+}
+
+.main-navigation > div > ul > li > .sub-menu,
+.main-navigation > ul > li > .sub-menu,
+.main-menu > li > .sub-menu {
+  top: 100%;
+  left: 0;
+  margin: 0;
+  min-width: 260px;
+  z-index: 9999;
+}
+
+.main-navigation > div > ul > li.menu-item-has-children::after,
+.main-navigation > ul > li.menu-item-has-children::after,
+.main-menu > li.menu-item-has-children::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 14px;
+}
+
+.main-navigation > div > ul > li:hover > .sub-menu,
+.main-navigation > div > ul > li:focus-within > .sub-menu,
+.main-navigation > ul > li:hover > .sub-menu,
+.main-navigation > ul > li:focus-within > .sub-menu,
+.main-menu > li:hover > .sub-menu,
+.main-menu > li:focus-within > .sub-menu {
+  display: block;
+}
+
+.main-navigation > div > ul > li > .sub-menu li,
+.main-navigation > ul > li > .sub-menu li,
+.main-menu > li > .sub-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.main-navigation > div > ul > li > .sub-menu a,
+.main-navigation > ul > li > .sub-menu a,
+.main-menu > li > .sub-menu a {
+  display: block;
+  padding: 10px 18px;
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .main-navigation > div > ul > li.menu-item-has-children::after,
+  .main-navigation > ul > li.menu-item-has-children::after,
+  .main-menu > li.menu-item-has-children::after {
+    display: none;
   }
 }

@@ -1,3 +1,8 @@
+Version 1.0.2.2
+- fixed dropdown hover gap so submenu remains visible while moving the pointer downward
+- added menu_class main-menu for consistent custom CSS targeting
+- packaged improved submenu compatibility rules for desktop and mobile
+
 Version 1.0.2.1
 - fixed nested WordPress menu dropdown handling for submenu items
 - added desktop dropdown styling for child navigation items

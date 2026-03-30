@@ -42,6 +42,7 @@ if (!defined('ABSPATH')) {
                 'theme_location' => 'primary',
                 'menu_id'        => 'primary-menu',
                 'container'      => false,
+                'menu_class'     => 'main-menu',
                 'fallback_cb'    => 'wp_page_menu',
             ]);
             ?>
