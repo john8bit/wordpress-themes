@@ -1,3 +1,8 @@
+Version 1.0.2.1
+- fixed nested WordPress menu dropdown handling for submenu items
+- added desktop dropdown styling for child navigation items
+- added mobile submenu expand/collapse behavior for touch devices
+
 Version 1.0.2.0
 - widened the global layout system to better match the homepage presentation
 - added page-content support for wide and full-width Gutenberg blocks on standard pages
